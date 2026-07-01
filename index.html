@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Live Zodiac Love-Match Clock by Astro Eleven" />
+    <title>Astro Eleven | Zodiac Love-Match Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-head">
+        <img src="images/astro-eleven-logo.png" alt="Astro Eleven logo" class="brand-logo" />
+        <div>
+          <p class="eyebrow">Premium astrology experience</p>
+          <h1>Live Zodiac Love-Match Clock</h1>
+          <p class="subtitle">
+            Real-time cosmic energy, animated zodiac hands, and instant compatibility insights.
+          </p>
+        </div>
+      </header>
+
+      <main class="hero-card">
+        <section class="clock-panel">
+          <div class="dial-wrap">
+            <div class="dial">
+              <div class="dial-core">
+                <div class="hour-hand" id="hourHand"></div>
+                <div class="minute-hand" id="minuteHand"></div>
+                <div class="center-dot"></div>
+              </div>
+              <div class="signs" id="signs"></div>
+            </div>
+          </div>
+
+          <aside class="info-panel">
+            <div class="info-card">
+              <p class="label">Current Local Time</p>
+              <div class="time-display" id="timeDisplay">--:--:--</div>
+            </div>
+
+            <div class="info-card">
+              <p class="label">Love Match</p>
+              <div class="match-value" id="matchPercent">--%</div>
+              <p class="mini-copy" id="matchText">Cosmic energy in motion</p>
+            </div>
+
+            <div class="info-card stat-grid">
+              <div>
+                <p class="label">Hour Sign</p>
+                <strong id="hourSign">Aries</strong>
+              </div>
+              <div>
+                <p class="label">Minute Sign</p>
+                <strong id="minuteSign">Taurus</strong>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/zodiac-clock.js"></script>
+  </body>
+</html>
