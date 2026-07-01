@@ -3,67 +3,171 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Live Zodiac Love-Match Clock by Astro Eleven" />
-    <title>Astro Eleven | Zodiac Love-Match Clock</title>
+    <meta name="description" content="Astro Eleven | Ultra-premium astrology platform" />
+    <title>Astro Eleven | Unlock Your Destiny</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="page-shell">
-      <header class="hero-head">
-        <img src="images/astro-eleven-logo.png" alt="Astro Eleven logo" class="brand-logo" />
-        <div>
-          <p class="eyebrow">Premium astrology experience</p>
-          <h1>Live Zodiac Love-Match Clock</h1>
-          <p class="subtitle">
-            Real-time cosmic energy, animated zodiac hands, and instant compatibility insights.
-          </p>
+      <header class="hero-panel">
+        <div class="hero-background"></div>
+        <div class="hero-stars"></div>
+        <div class="hero-content reveal">
+          <img src="images/astro-eleven-logo.png" alt="Astro Eleven logo" class="hero-logo" />
+          <div class="hero-copy">
+            <p class="eyebrow">Divine Astrology & Spiritual Luxury</p>
+            <h1>Unlock Your Destiny with Ancient Wisdom</h1>
+            <p class="subtitle">
+              Personalized Astrology, accurate guidance & positive life solutions crafted for your highest success.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="button button-primary">Get Free Horoscope</a>
+              <a href="#contact" class="button button-secondary">Talk to an Astrologer</a>
+            </div>
+          </div>
         </div>
       </header>
 
-      <main class="hero-card">
-        <section class="clock-panel">
-          <div class="dial-wrap">
-            <div class="dial">
-              <div class="dial-core">
-                <div class="hour-hand" id="hourHand"></div>
-                <div class="minute-hand" id="minuteHand"></div>
-                <div class="center-dot"></div>
+      <section class="feature-grid reveal">
+        <article class="feature-card">
+          <span class="feature-badge">01</span>
+          <h2>Why Choose Astro Eleven</h2>
+          <p>Trusted celestial guidance with high-vibe accuracy, premium soul-aligned readings and transformational clarity.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-badge">02</span>
+          <h2>Daily Horoscope</h2>
+          <p>Get a beautifully crafted daily forecast that empowers your decisions and reveals cosmic opportunities.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-badge">03</span>
+          <h2>Zodiac Compatibility</h2>
+          <p>Discover the love-match energy between you and your partner with premium compatibility insights.</p>
+        </article>
+      </section>
+
+      <section class="clock-section reveal" id="clock">
+        <div class="clock-card">
+          <div class="clock-header">
+            <p class="eyebrow">Live Zodiac Matching</p>
+            <h2>Interactive Live Zodiac Love-Match Clock</h2>
+          </div>
+          <div class="clock-body">
+            <div class="clock-visual">
+              <div class="zodiac-ring"></div>
+              <div class="dial">
+                <div class="dial-core">
+                  <div class="hour-hand" id="hourHand"></div>
+                  <div class="minute-hand" id="minuteHand"></div>
+                  <div class="center-dot"></div>
+                </div>
+                <div class="signs" id="signs"></div>
               </div>
-              <div class="signs" id="signs"></div>
+              <div class="clock-glow"></div>
+            </div>
+            <div class="clock-meta">
+              <div class="stat-card">
+                <span class="stat-label">Current Time</span>
+                <strong id="timeDisplay">--:--:--</strong>
+              </div>
+              <div class="stat-card stat-highlight">
+                <span class="stat-label">Love Match</span>
+                <strong id="matchPercent">--%</strong>
+                <p id="matchText">A celestial spark of destiny</p>
+              </div>
+              <div class="detail-grid">
+                <div>
+                  <span class="stat-label">Hour Sign</span>
+                  <strong id="hourSign">Aries</strong>
+                </div>
+                <div>
+                  <span class="stat-label">Minute Sign</span>
+                  <strong id="minuteSign">Taurus</strong>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <aside class="info-panel">
-            <div class="info-card">
-              <p class="label">Current Local Time</p>
-              <div class="time-display" id="timeDisplay">--:--:--</div>
-            </div>
+      <section class="section-grid reveal">
+        <article class="section-card">
+          <h3>Numerology Reports</h3>
+          <p>Decode your life path, fate number and unique soul signature with luxurious numerology analysis.</p>
+        </article>
+        <article class="section-card">
+          <h3>Kundli Analysis</h3>
+          <p>Receive a detailed chart reading, planetary insights and spiritual remedies for life balance.</p>
+        </article>
+        <article class="section-card">
+          <h3>Career Guidance</h3>
+          <p>Find your highest career path, ambition triggers and success timing with premium astrological coaching.</p>
+        </article>
+        <article class="section-card">
+          <h3>Love & Relationship Predictions</h3>
+          <p>Explore your heart-space, romantic potential and soulmate timing through an elegant, trusted lens.</p>
+        </article>
+        <article class="section-card">
+          <h3>Wealth & Prosperity Forecast</h3>
+          <p>Empower your financial journey with divine abundance readings and prosperity rituals.</p>
+        </article>
+      </section>
 
-            <div class="info-card">
-              <p class="label">Love Match</p>
-              <div class="match-value" id="matchPercent">--%</div>
-              <p class="mini-copy" id="matchText">Cosmic energy in motion</p>
-            </div>
+      <section class="testimonials reveal">
+        <div class="section-heading">
+          <p class="eyebrow">Testimonials</p>
+          <h2>Trusted by seekers of clarity and success.</h2>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card">
+            <p>"Astro Eleven offered the most elegant, accurate consultation I have ever received. The love-match clock felt magical."</p>
+            <strong>— Meera, Founder</strong>
+          </article>
+          <article class="testimonial-card">
+            <p>"Premium, soulful, and clear. Every section feels tailored to my life path and future goals."</p>
+            <strong>— Arjun, CEO</strong>
+          </article>
+        </div>
+      </section>
 
-            <div class="info-card stat-grid">
-              <div>
-                <p class="label">Hour Sign</p>
-                <strong id="hourSign">Aries</strong>
-              </div>
-              <div>
-                <p class="label">Minute Sign</p>
-                <strong id="minuteSign">Taurus</strong>
-              </div>
-            </div>
-          </aside>
-        </section>
-      </main>
+      <section class="faq reveal">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>Your most asked questions answered.</h2>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>How does the Live Zodiac Love-Match Clock work?</h4>
+            <p>It maps current time to zodiac energies, revealing a real-time compatibility percentage and personality match.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Can I get a custom horoscope?</h4>
+            <p>Yes. Our astrologers provide personal readings based on your birth chart, location and life goals.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Is Astro Eleven suitable for career advice?</h4>
+            <p>Absolutely. We combine astrology, numerology and sacred timing to guide career, wealth and purpose.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact reveal" id="contact">
+        <div class="contact-card">
+          <span class="eyebrow">Contact & Consultation</span>
+          <h2>Reserve your premium astrology session today.</h2>
+          <p>Speak with a senior astrologer, receive a bespoke reading and start your journey to clarity.</p>
+          <div class="contact-actions">
+            <a href="mailto:consult@astroeleven.com" class="button button-primary">Email Consultation</a>
+            <a href="tel:+919999999999" class="button button-secondary">Book a Call</a>
+          </div>
+        </div>
+      </section>
     </div>
 
     <script src="js/jquery.min.js"></script>

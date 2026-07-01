@@ -14,21 +14,21 @@ $(function () {
     element.className = 'sign';
     element.textContent = label;
     const angle = index * 30;
-    element.style.transform = `rotate(${angle}deg) translateY(-155px) rotate(-${angle}deg)`;
+    element.style.transform = `rotate(${angle}deg) translateY(-170px) rotate(-${angle}deg)`;
     signContainer.appendChild(element);
   });
 
   function updateClock() {
     const now = new Date();
-    const hours = now.getHours() % 12;
+    const hours24 = now.getHours();
+    const hours = hours24 % 12;
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
     const hourIndex = hours;
     const minuteIndex = Math.floor(minutes / 5);
-
     const hourAngle = (hours * 30) + (minutes / 60) * 30;
-    const minuteAngle = (minuteIndex * 30) + (minutes % 5) * 6;
+    const minuteAngle = minutes * 6;
     const secondAngle = seconds * 6;
 
     hourHand.style.transform = `rotate(${hourAngle}deg)`;
@@ -43,15 +43,27 @@ $(function () {
     hourSign.textContent = signs[hourIndex];
     minuteSign.textContent = signs[minuteIndex];
 
-    const matchScore = 70 + ((hourIndex + 1) * 3 + (minuteIndex + 1) * 2 + (seconds % 7)) % 24;
+    const matchScore = 74 + ((hourIndex + 1) * 3 + (minuteIndex + 1) * 2 + (seconds % 5)) % 26;
     matchPercent.textContent = `${matchScore}%`;
-
-    const mood = matchScore >= 88 ? 'A glowing cosmic match' : matchScore >= 80 ? 'A warm celestial bond' : 'A curious cosmic spark';
-    matchText.textContent = mood;
-
+    matchText.textContent = matchScore >= 90 ? 'A radiant celestial union' : matchScore >= 82 ? 'A glowing cosmic alignment' : 'A gentle destiny spark';
     document.body.style.setProperty('--glow-angle', `${secondAngle}deg`);
+  }
+
+  function revealOnScroll() {
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealElements.forEach((element) => observer.observe(element));
   }
 
   updateClock();
   setInterval(updateClock, 1000);
+  revealOnScroll();
 });
