@@ -1,7 +1,7 @@
 $(function () {
   const englishSigns = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
   const tamilSigns = ['மேஷம்', 'ரிஷபம்', 'மிதுனம்', 'கடகம்', 'சிம்மம்', 'கன்னி', 'துலாம்', 'விருச்சிகம்', 'தனுசு', 'மகரம்', 'கும்பம்', 'மீனம்'];
-  
+
   const signContainer = document.getElementById('signs');
   const hourHand = document.getElementById('hourHand');
   const minuteHand = document.getElementById('minuteHand');
@@ -21,7 +21,7 @@ $(function () {
     signContainer.innerHTML = '';
     const activeSigns = lang === 'ta' ? tamilSigns : englishSigns;
     const zodiacSymbols = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
-    
+
     activeSigns.forEach((label, index) => {
       const element = document.createElement('div');
       element.className = 'sign';
@@ -97,22 +97,22 @@ $(function () {
 
     const matchScore = 74 + ((hourIndex + 1) * 3 + (minuteIndex + 1) * 2 + (seconds % 5)) % 26;
     if (matchPercent) matchPercent.textContent = `${matchScore}%`;
-    
+
     if (matchText) {
-      const textTa = matchScore >= 90 
-        ? 'தேவலோக நல்இணைப்பு!' 
-        : matchScore >= 82 
-          ? 'அற்புதமான அண்ட சீரமைப்பு!' 
+      const textTa = matchScore >= 90
+        ? 'தேவலோக நல்இணைப்பு!'
+        : matchScore >= 82
+          ? 'அற்புதமான அண்ட சீரமைப்பு!'
           : 'அண்டவெளியின் தெய்வீக விதிப்பொறி';
-      const textEn = matchScore >= 90 
-        ? 'A radiant celestial union' 
-        : matchScore >= 82 
-          ? 'A glowing cosmic alignment' 
+      const textEn = matchScore >= 90
+        ? 'A radiant celestial union'
+        : matchScore >= 82
+          ? 'A glowing cosmic alignment'
           : 'A gentle destiny spark';
-      
+
       matchText.innerHTML = `<span class="lang-en">${textEn}</span><span class="lang-ta">${textTa}</span>`;
     }
-    
+
     document.body.style.setProperty('--glow-angle', `${secondAngle}deg`);
   }
 
@@ -133,15 +133,15 @@ $(function () {
   // Handle booking buttons
   const bookButtons = document.querySelectorAll('.book-btn');
   bookButtons.forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       const service = this.getAttribute('data-service');
       const lang = document.body.classList.contains('lang-ta') ? 'ta' : 'en';
-      
+
       let serviceLabel = '';
       let message = '';
       if (lang === 'ta') {
-        switch(service) {
+        switch (service) {
           case 'expert':
             serviceLabel = 'நிபுணத்துவ ஜோதிடர்கள்';
             message = 'வணக்கம் Astro Eleven, நான் "நிபுணத்துவ ஜோதிடர்கள்" சேவைக்கான ஒரு அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
@@ -167,7 +167,7 @@ $(function () {
             message = 'வணக்கம் Astro Eleven, நான் ஒரு ஜோதிட ஆலோசனை அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
         }
       } else {
-        switch(service) {
+        switch (service) {
           case 'expert':
             serviceLabel = 'Expert Astrologers';
             message = 'Hi Astro Eleven, I would like to book a session for "Expert Astrologers".';
@@ -193,9 +193,9 @@ $(function () {
             message = 'Hi Astro Eleven, I would like to book an astrology consultation session.';
         }
       }
-      
-      const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
-      
+
+      const whatsappUrl = `https://wa.me/918807942336?text=${encodeURIComponent(message)}`;
+
       const confirmHtml = `
         <div class="booking-confirm-sheet" style="padding: 10px 0;">
           <div style="font-size: 2.2rem; margin-bottom: 12px;">🌟</div>
@@ -219,10 +219,10 @@ $(function () {
           </button>
         </div>
       `;
-      
+
       openBottomSheet(confirmHtml);
-      
-      document.getElementById('btnConfirmWhatsApp').addEventListener('click', function() {
+
+      document.getElementById('btnConfirmWhatsApp').addEventListener('click', function () {
         window.open(whatsappUrl, '_blank');
         closeBottomSheet();
       });
@@ -233,17 +233,17 @@ $(function () {
   // Handle live astrologer consultation buttons
   const astroButtons = document.querySelectorAll('.astro-btn');
   astroButtons.forEach(btn => {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       const astrologerName = this.getAttribute('data-astro');
       const action = this.getAttribute('data-action');
       const lang = document.body.classList.contains('lang-ta') ? 'ta' : 'en';
-      
+
       let actionText = '';
       let message = '';
-      
+
       if (lang === 'ta') {
-        switch(action) {
+        switch (action) {
           case 'chat':
             actionText = 'அரட்டை (Chat) சேவை';
             break;
@@ -256,7 +256,7 @@ $(function () {
         }
         message = `வணக்கம் Astro Eleven, நான் ஜோதிடர் "${astrologerName}" அவர்களிடம் ஒரு "${actionText}" அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.`;
       } else {
-        switch(action) {
+        switch (action) {
           case 'chat':
             actionText = 'Chat session';
             break;
@@ -269,10 +269,10 @@ $(function () {
         }
         message = `Hi Astro Eleven, I would like to book a "${actionText}" with "${astrologerName}".`;
       }
-      
-      const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+
+      const whatsappUrl = `https://wa.me/918807942336?text=${encodeURIComponent(message)}`;
       const avatarLetters = astrologerName.split(' ').map(n => n[0]).join('');
-      
+
       const confirmHtml = `
         <div class="booking-confirm-sheet" style="padding: 10px 0;">
           <div style="font-size: 2.2rem; margin-bottom: 12px;">🔮</div>
@@ -299,10 +299,10 @@ $(function () {
           </button>
         </div>
       `;
-      
+
       openBottomSheet(confirmHtml);
-      
-      document.getElementById('btnConfirmWhatsApp').addEventListener('click', function() {
+
+      document.getElementById('btnConfirmWhatsApp').addEventListener('click', function () {
         window.open(whatsappUrl, '_blank');
         closeBottomSheet();
       });
@@ -348,7 +348,7 @@ $(function () {
   const tarotCtaBtn = document.getElementById('tarotCtaBtn');
 
   tarotCards.forEach(wrapper => {
-    wrapper.addEventListener('click', function() {
+    wrapper.addEventListener('click', function () {
       // Unflip all other cards
       tarotCards.forEach(w => {
         if (w !== wrapper) {
@@ -385,7 +385,7 @@ $(function () {
 
   // Handle Tarot CTA button click routing to WhatsApp
   if (tarotCtaBtn) {
-    tarotCtaBtn.addEventListener('click', function(e) {
+    tarotCtaBtn.addEventListener('click', function (e) {
       e.preventDefault();
       const lang = document.body.classList.contains('lang-ta') ? 'ta' : 'en';
       const categoryLabel = activeCategory ? activeCategory.toUpperCase() : 'General';
@@ -397,7 +397,7 @@ $(function () {
         message = `Hi Astro Eleven, I flipped the "${categoryLabel}" Tarot card and would like to book a detailed 1-on-1 Tarot consultation session.`;
       }
 
-      const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/918807942336?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
     });
   }
@@ -427,17 +427,17 @@ $(function () {
   function switchMobileView(viewName) {
     const views = document.querySelectorAll('.app-view');
     views.forEach(v => v.classList.remove('active-view'));
-    
+
     const targetViews = document.querySelectorAll('.app-view-' + viewName);
     targetViews.forEach(v => v.classList.add('active-view'));
 
     const appTabs = document.querySelectorAll('.app-tab');
     appTabs.forEach(t => t.classList.remove('active'));
-    
+
     const targetHref = viewName === 'home' ? '#' : '#' + viewName;
     const activeTab = document.querySelector(`.bottom-app-bar .app-tab[href="${targetHref}"]`);
     if (activeTab) activeTab.classList.add('active');
-    
+
     // Sync body class for global targeting
     document.body.className = document.body.className.replace(/\bview-active-\S+/g, '');
     document.body.classList.add('view-active-' + viewName);
@@ -449,7 +449,7 @@ $(function () {
   // Handle mobile bottom navigation tabs active state and view toggles
   const appTabs = document.querySelectorAll('.app-tab');
   appTabs.forEach(tab => {
-    tab.addEventListener('click', function(e) {
+    tab.addEventListener('click', function (e) {
       if (window.innerWidth <= 720) {
         e.preventDefault();
         const href = this.getAttribute('href');
