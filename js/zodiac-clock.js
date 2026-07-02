@@ -342,6 +342,32 @@ $(function () {
     });
   });
 
+  // Handle Ganesha Blessing Popup for new visitors
+  const ganeshaPopup = document.getElementById('ganeshaPopup');
+  const popupEnterBtn = document.getElementById('popupEnterBtn');
+  const popupCloseBtn = document.getElementById('popupCloseBtn');
+
+  if (ganeshaPopup && !localStorage.getItem('ganeshaWelcomeSeen')) {
+    ganeshaPopup.style.display = 'flex';
+  }
+
+  function dismissGaneshaPopup() {
+    if (ganeshaPopup) {
+      ganeshaPopup.classList.add('fade-out');
+      localStorage.setItem('ganeshaWelcomeSeen', 'true');
+      setTimeout(() => {
+        ganeshaPopup.style.display = 'none';
+      }, 400); // Match CSS fade-out animation
+    }
+  }
+
+  if (popupEnterBtn) {
+    popupEnterBtn.addEventListener('click', dismissGaneshaPopup);
+  }
+  if (popupCloseBtn) {
+    popupCloseBtn.addEventListener('click', dismissGaneshaPopup);
+  }
+
   // Load language from localStorage or default to English
   const savedLang = localStorage.getItem('astro-lang') || 'en';
   setLanguage(savedLang);
