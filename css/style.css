@@ -1,14 +1,18 @@
-﻿:root {
-  --bg: #0b0f1a;
-  --panel: rgba(12, 18, 31, 0.92);
-  --panel-soft: rgba(11, 15, 26, 0.9);
-  --gold: #f7c948;
-  --gold-soft: #ffe399;
-  --orange: #ff8a00;
-  --amber: #ffb300;
-  --text: #f5f5f5;
-  --muted: #a9b0c4;
-  --shadow: 0 32px 80px rgba(0, 0, 0, 0.35);
+:root {
+  --bg: #FAF7F0; /* Soft warm ivory cream background */
+  --panel: rgba(255, 255, 255, 0.85); /* Frosted white glass */
+  --panel-soft: rgba(255, 255, 255, 0.95);
+  --gold: #D4AF37; /* Warm metallic gold from logo */
+  --gold-soft: #9E7D1C; /* Darker gold for text/headings readability */
+  --gold-gradient: linear-gradient(135deg, #F3B922 0%, #D4AF37 100%);
+  --orange: #E65C00; /* Darker orange for good contrast on light bg */
+  --orange-gradient: linear-gradient(135deg, #FF7300 0%, #E65C00 100%);
+  --amber: #D47A00;
+  --text: #2E281B; /* Dark slate charcoal/warm brown text */
+  --muted: #736852; /* Muted brown-grey for description texts */
+  --shadow: 0 24px 64px rgba(158, 125, 28, 0.08), 0 8px 24px rgba(0, 0, 0, 0.03);
+  --gold-shadow: 0 4px 20px rgba(243, 185, 34, 0.15);
+  --orange-shadow: 0 4px 20px rgba(255, 115, 0, 0.15);
 }
 
 * {
@@ -25,26 +29,105 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top, rgba(255, 186, 30, 0.08), transparent 26%),
-    radial-gradient(circle at 15% 10%, rgba(255, 202, 80, 0.08), transparent 16%),
-    linear-gradient(135deg, #050814 0%, var(--bg) 100%);
+    radial-gradient(circle at top, rgba(243, 185, 34, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(255, 115, 0, 0.08) 0%, transparent 25%),
+    linear-gradient(135deg, #FFFCF5 0%, var(--bg) 100%);
 }
 
+/* Bilingual text switching rules */
+body.lang-en .lang-ta {
+  display: none !important;
+}
+body.lang-ta .lang-en {
+  display: none !important;
+}
+
+/* Full Width Page Shell */
 .page-shell {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 28px 24px 36px;
+  max-width: 100%;
+  margin: 0;
+  padding: 24px 40px 48px;
 }
 
+/* Premium Top Navigation Bar (Light Glassmorphic) */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 24px;
+  margin-bottom: 24px;
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gold-soft);
+  letter-spacing: 0.12em;
+}
+
+.lang-switcher {
+  display: flex;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lang-btn.active {
+  background: var(--gold-gradient);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+}
+
+.lang-btn:not(.active):hover {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Hero Section (Ivory Glass Panel - Split Layout) */
 .hero-panel {
   position: relative;
   overflow: hidden;
   border-radius: 36px;
-  padding: 60px 32px 48px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 32px 110px rgba(0, 0, 0, 0.4);
+  padding: 48px 40px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.5));
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: var(--shadow);
 }
 
 .hero-background,
@@ -55,38 +138,52 @@ body {
 }
 
 .hero-background {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 217, 120, 0.14), transparent 20%),
-    radial-gradient(circle at 95% 20%, rgba(255, 138, 0, 0.1), transparent 16%);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(243, 185, 34, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(255, 115, 0, 0.06), transparent 25%);
 }
 
 .hero-stars {
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 186, 30, 0.2) 1px, transparent 1px);
-  background-size: 40px 40px, 70px 70px;
-  opacity: 0.35;
-  animation: drift 18s linear infinite;
+    radial-gradient(circle, rgba(158, 125, 28, 0.12) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 115, 0, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px;
+  opacity: 0.6;
+  animation: drift 22s linear infinite;
 }
 
-.hero-content {
+/* Split Columns inside Hero */
+.hero-grid {
   position: relative;
   display: grid;
-  gap: 24px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
   align-items: center;
-  justify-items: center;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
+  z-index: 1;
 }
 
-.hero-logo {
-  width: 130px;
-  height: 130px;
-  border-radius: 28px;
-  padding: 18px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 36px rgba(247, 201, 72, 0.24);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.hero-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.hero-logo-small {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .eyebrow {
@@ -94,61 +191,428 @@ body {
   color: var(--gold-soft);
   text-transform: uppercase;
   letter-spacing: 0.35em;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.tagline {
+  margin: 2px 0 0 0;
+  color: var(--orange);
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 h1 {
-  margin: 0;
+  margin: 12px 0 16px;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
-  line-height: 1.02;
+  font-size: clamp(2.3rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--text);
 }
 
 .subtitle {
-  margin: 0 auto;
-  max-width: 740px;
+  margin: 0 0 24px;
+  max-width: 100%;
   color: var(--muted);
-  line-height: 1.8;
-  font-size: 1rem;
+  line-height: 1.7;
+  font-size: 0.98rem;
 }
 
 .hero-actions {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 180px;
-  padding: 14px 24px;
+  min-width: 170px;
+  padding: 13px 24px;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--gold), var(--amber));
-  color: #0b0f1a;
-  box-shadow: 0 18px 45px rgba(247, 201, 72, 0.2);
+  background: var(--gold-gradient);
+  color: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.35);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--orange-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.button-primary:hover::after {
+  opacity: 1;
+}
+
+.button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(255, 115, 0, 0.4);
 }
 
 .button-secondary {
-  background: rgba(255, 138, 0, 0.16);
-  border: 1px solid rgba(255, 138, 0, 0.28);
+  background: rgba(255, 115, 0, 0.04);
+  border: 1.5px solid rgba(255, 115, 0, 0.3);
+  color: var(--orange);
+  box-shadow: inset 0 0 10px rgba(255, 115, 0, 0.02);
+}
+
+.button-secondary:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 115, 0, 0.08);
+  border-color: var(--gold);
+  box-shadow: 0 10px 24px rgba(212, 175, 55, 0.15);
+}
+
+/* Interactive Clock Column */
+.hero-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
+  border-radius: 30px;
+  padding: 24px 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.clock-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+.zodiac-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+/* Thick outer gold borders for premium astrolabe look */
+.dial {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #FFF5D2 0%, #F5D372 60%, #D4AF37 100%);
+  border: 4px solid #A67C1E; /* Bronze-gold plate border */
+  box-shadow:
+    inset 0 0 35px rgba(0, 0, 0, 0.12),
+    0 10px 25px rgba(158, 125, 28, 0.2),
+    0 0 0 3px rgba(255, 255, 255, 0.8),
+    0 0 0 6px #D4AF37,
+    var(--shadow);
+}
+
+/* Conic sweep radar effect representing the second hand */
+.dial::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from var(--glow-angle) at 50% 50%, rgba(212, 175, 55, 0.14) 0deg, transparent 45deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inner mechanical astrolabe rings */
+.dial::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 175, 55, 0.3);
+  background: radial-gradient(circle, transparent 40%, rgba(212, 175, 55, 0.02) 100%);
+  animation: spin 75s linear infinite;
+  pointer-events: none;
+}
+
+.dial-core {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.dial-core::before {
+  content: '';
+  position: absolute;
+  width: 72%;
+  height: 72%;
+  top: 14%;
+  left: 14%;
+  border-radius: 50%;
+  border: 1px dotted rgba(255, 115, 0, 0.22);
+  animation: spin-reverse 50s linear infinite;
+  pointer-events: none;
+}
+
+.hour-hand,
+.minute-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border-radius: 999px;
+  transform-origin: bottom center;
+  transition: transform 0.15s cubic-bezier(0.4, 2.08, 0.55, 1);
+}
+
+/* Hour hand styling with gold and custom tip */
+.hour-hand {
+  height: 72px;
+  width: 4.5px;
+  margin-left: -2.25px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-soft));
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+}
+
+.hour-hand::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 0 6px var(--gold);
+}
+
+/* Minute hand styling with orange and custom tip */
+.minute-hand {
+  height: 98px;
+  width: 3px;
+  margin-left: -1.5px;
+  background: linear-gradient(180deg, var(--orange), var(--gold));
+  box-shadow: 0 0 8px rgba(255, 115, 0, 0.25);
+}
+
+.minute-hand::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 0 6px var(--orange);
+}
+
+.center-dot {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -9px;
+  margin-left: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFF, var(--gold) 60%, var(--gold-soft));
+  box-shadow: 0 0 8px var(--gold);
+  border: 2px solid #FFFFFF;
+  z-index: 4;
+}
+
+.signs {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* Align zodiac signs around the clock */
+.sign {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 32px;
+  margin-top: -16px;
+  margin-left: -27px;
+  text-align: center;
+  font-weight: 700;
+  color: #3E3114; /* Deep bronze-gold text color */
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  opacity: 0.8;
+  line-height: 1.1;
+}
+
+.sign-sym {
+  font-size: 0.78rem;
+  color: #8b6508; /* Premium golden bronze for symbols */
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.sign-name {
+  font-size: 0.52rem;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+/* Active highlights on light background */
+.sign.active-hour {
+  opacity: 1;
+}
+
+.sign.active-hour .sign-sym {
+  color: #C40000 !important; /* Crimson hour sign glow */
+  transform: scale(1.15);
+  text-shadow: 0 0 8px rgba(196, 0, 0, 0.5);
+}
+
+.sign.active-hour .sign-name {
+  color: #C40000 !important;
+  font-weight: 900;
+}
+
+.sign.active-minute {
+  opacity: 1;
+}
+
+.sign.active-minute .sign-sym {
+  color: #0050C4 !important; /* Blue minute sign glow */
+  transform: scale(1.15);
+  text-shadow: 0 0 8px rgba(0, 80, 196, 0.5);
+}
+
+.sign.active-minute .sign-name {
+  color: #0050C4 !important;
+  font-weight: 900;
+}
+
+.sign.active-hour.active-minute {
+  opacity: 1;
+}
+
+.sign.active-hour.active-minute .sign-sym {
+  color: #8A00C4 !important;
+  text-shadow: 0 0 10px rgba(138, 0, 196, 0.6);
+}
+
+.sign.active-hour.active-minute .sign-name {
+  color: #8A00C4 !important;
+  font-weight: 900;
+}
+
+/* Clock status and match bars */
+.clock-status-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 18px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 14px;
+  padding: 10px 16px;
+  gap: 12px;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-label {
+  display: block;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.status-item strong {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--gold-soft);
+  margin-top: 2px;
+}
+
+.status-item.highlight strong {
+  color: var(--orange);
+}
+
+.status-subtext {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.status-subtext p {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.clock-indicators {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.indicator-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+}
+
+.ind-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.indicator-card strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.95rem;
   color: var(--gold-soft);
 }
 
-.button:hover {
-  transform: translateY(-2px);
-}
-
+/* Feature Grid */
 .feature-grid,
 .section-grid,
 .testimonial-grid,
@@ -159,21 +623,29 @@ h1 {
 
 .feature-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 42px 0 18px;
+  margin: 40px 0 20px;
 }
 
 .feature-card,
 .section-card,
 .testimonial-card,
 .faq-item,
-.clock-card,
-.contact-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+.contact-card,
+.pillar-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: var(--shadow);
   border-radius: 28px;
-  padding: 28px;
-  backdrop-filter: blur(16px);
+  padding: 32px;
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover,
+.section-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+  box-shadow: 0 20px 48px rgba(158, 125, 28, 0.12);
 }
 
 .feature-card {
@@ -188,10 +660,11 @@ h1 {
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  background: rgba(255, 138, 0, 0.14);
-  color: var(--gold);
+  background: rgba(255, 115, 0, 0.06);
+  color: var(--orange);
   font-weight: 800;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 115, 0, 0.16);
 }
 
 .feature-card h2,
@@ -199,8 +672,15 @@ h1 {
 .testimonial-card strong,
 .faq-item h4,
 .contact-card h2,
-.clock-header h2 {
+.pillars-section h2 {
   margin: 0 0 14px;
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-soft);
+  font-weight: 700;
+}
+
+.feature-card h2 {
+  font-size: 1.5rem;
 }
 
 .feature-card p,
@@ -208,259 +688,636 @@ h1 {
 .testimonial-card p,
 .faq-item p,
 .contact-card p,
-.clock-header p {
+.pillars-section p {
   margin: 0;
   color: var(--muted);
   line-height: 1.8;
+  font-size: 0.95rem;
 }
 
-.section-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 36px 0;
+/* Live Astrologers Directory Section */
+.astrologers-section {
+  margin: 64px 0;
+  position: relative;
+  padding: 40px 24px;
+  border-radius: 36px;
+  background: radial-gradient(circle at center, rgba(243, 185, 34, 0.05) 0%, transparent 70%);
 }
 
-.clock-section {
-  margin: 48px 0;
-}
-
-.clock-card {
-  padding: 32px;
-}
-
-.clock-header {
-  margin-bottom: 28px;
-}
-
-.clock-header .eyebrow {
-  margin-bottom: 12px;
-}
-
-.clock-body {
+.astrologers-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.astrologer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 252, 245, 0.92) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.35); /* Elegant gold border */
+  box-shadow:
+    inset 0 0 15px rgba(212, 175, 55, 0.05),
+    0 12px 36px rgba(158, 125, 28, 0.07),
+    var(--shadow);
+  border-radius: 28px;
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.astrologer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.astrologer-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+  box-shadow: 0 20px 48px rgba(158, 125, 28, 0.14);
+}
+
+.astro-badge {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  color: #27ae60;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
   align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(46, 204, 113, 0.05);
+  z-index: 2;
 }
 
-.clock-visual {
-  position: relative;
-  display: grid;
-  place-items: center;
-}
-
-.zodiac-ring {
-  position: absolute;
-  inset: -18px;
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #2ecc71;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 186, 30, 0.15), transparent 48%);
-  filter: blur(14px);
+  box-shadow: 0 0 8px #2ecc71;
+  animation: blink 1.5s infinite;
 }
 
-.dial {
+.astro-profile {
+  display: flex;
+  gap: 20px;
+  align-items: center;
   position: relative;
-  width: min(420px, 100%);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06), rgba(11, 15, 26, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 48px rgba(247, 201, 72, 0.12), 0 0 80px rgba(255, 138, 0, 0.12);
+  z-index: 2;
 }
 
-.dial::before {
+.astro-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 4px;
+}
+
+.astro-avatar-wrapper::after {
   content: '';
   position: absolute;
-  inset: 12px;
+  inset: 0;
   border-radius: 50%;
-  border: 1px dashed rgba(247, 201, 72, 0.2);
-  animation: spin 20s linear infinite;
-}
-
-.dial::after {
-  content: '';
-  position: absolute;
-  inset: 18px;
-  border-radius: 50%;
-  box-shadow: 0 0 120px rgba(247, 201, 72, 0.12);
-  transform: rotate(var(--glow-angle));
+  border: 1.5px dashed rgba(212, 175, 55, 0.55);
+  animation: spin 30s linear infinite;
   pointer-events: none;
 }
 
-.dial-core {
+.astro-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 1.25rem;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(158, 125, 28, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.avatar-gold {
+  background: linear-gradient(135deg, #F3B922, #D4AF37);
+}
+
+.avatar-orange {
+  background: linear-gradient(135deg, #FF7300, #E65C00);
+}
+
+.avatar-amber {
+  background: linear-gradient(135deg, #FF9D00, #D47A00);
+}
+
+.astro-info h3 {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.astro-spec {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.astro-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.astro-rating {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.astro-pricing-row {
+  margin: 20px 0;
+  padding: 10px 16px;
+  background: rgba(212, 175, 55, 0.04);
+  border: 1px dashed rgba(212, 175, 55, 0.22);
+  border-radius: 14px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.price-val {
+  color: var(--gold-soft);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.astro-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: auto;
+}
+
+.astro-btn {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
+  color: var(--muted);
+  border-radius: 14px;
+  padding: 10px 4px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.astro-btn svg {
+  stroke: var(--muted);
+  width: 18px;
+  height: 18px;
+  transition: stroke 0.25s ease, transform 0.25s ease;
+}
+
+.astro-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 115, 0, 0.12);
+}
+
+.astro-btn:hover svg {
+  stroke: var(--orange);
+  transform: scale(1.08);
+}
+
+.btn-chat:hover {
+  background: rgba(255, 115, 0, 0.03);
+}
+
+.btn-call:hover {
+  background: rgba(212, 175, 55, 0.03);
+}
+
+.btn-video:hover {
+  background: rgba(212, 175, 55, 0.03);
+}
+
+/* Daily Tarot Card Reader Styles */
+.tarot-section {
+  margin: 64px 0;
+  position: relative;
+  padding: 40px 24px;
+  border-radius: 36px;
+  background: radial-gradient(circle at center, rgba(255, 115, 0, 0.04) 0%, transparent 70%);
+}
+
+.tarot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  margin-top: 36px;
+  width: 100%;
+}
+
+.tarot-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 800px;
+  justify-content: center;
+}
+
+.tarot-card-wrapper {
+  perspective: 1000px;
+  cursor: pointer;
+  aspect-ratio: 0.62;
+  width: 100%;
+  max-width: 190px;
+  margin: 0 auto;
+}
+
+.tarot-card {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(158, 125, 28, 0.05);
+}
+
+.tarot-card-wrapper:hover .tarot-card {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(158, 125, 28, 0.14);
+}
+
+.tarot-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-side {
   position: absolute;
   inset: 0;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  border: 2px solid rgba(212, 175, 55, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 16px;
+  overflow: hidden;
+}
+
+/* Back of the card: luxury gold astrolabe pattern */
+.card-back {
+  background: linear-gradient(135deg, #FFFCF7 0%, #F5ECC8 100%);
+  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.12);
+}
+
+.card-pattern {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.pattern-sun {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--gold);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  position: relative;
+  animation: spin 60s linear infinite;
+}
+
+.pattern-sun::before {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold);
+  font-size: 1.8rem;
+}
+
+.card-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--gold-soft);
+  letter-spacing: 0.2em;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+
+/* Front of the card: Revealed golden card */
+.card-front {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFF2CC 50%, #FFE0B3 100%);
+  box-shadow: 
+    inset 0 0 25px rgba(255, 115, 0, 0.1),
+    0 10px 24px rgba(212, 175, 55, 0.15);
+  border-color: var(--orange);
+}
+
+.card-front-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+}
+
+.tarot-symbol {
+  font-size: 2.8rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+}
+
+.tarot-name {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--text);
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Reading Reveal Panel */
+.tarot-reveal-panel {
+  width: 100%;
+  max-width: 600px;
+  animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-content-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid var(--orange);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 20px 48px rgba(255, 115, 0, 0.1), var(--shadow);
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+
+.reveal-header {
+  margin-bottom: 18px;
+}
+
+.reveal-badge {
+  display: inline-block;
+  background: rgba(255, 115, 0, 0.08);
+  border: 1px solid rgba(255, 115, 0, 0.2);
+  color: var(--orange);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.reveal-content-card h4 {
+  margin: 10px 0 0 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold-soft);
+  font-weight: 800;
+}
+
+.reveal-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 0 0 24px 0;
+}
+
+.tarot-cta-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 14px 28px;
+  background: var(--orange-gradient);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: var(--orange-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarot-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 115, 0, 0.4);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Five Sacred Pillars Section (Derived from Logo bottom elements) */
+.pillars-section {
+  margin: 64px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.pillar-card {
+  padding: 32px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pillar-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--orange);
+  box-shadow: 0 20px 48px rgba(158, 125, 28, 0.15);
+}
+
+.pillar-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-soft);
+  margin-bottom: 22px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+.pillar-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.pillar-card:hover .pillar-icon {
+  transform: scale(1.1) rotate(12deg);
+  background: rgba(255, 115, 0, 0.08);
+  border-color: rgba(255, 115, 0, 0.3);
+  color: var(--orange);
+}
+
+.pillar-card h3 {
+  font-size: 1.12rem;
+  margin: 0 0 12px;
+  color: var(--text);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.pillar-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.book-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 10px 18px;
+  background: var(--gold-gradient);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hour-hand,
-.minute-hand {
-  position: absolute;
-  bottom: 50%;
-  width: 4px;
-  border-radius: 999px;
-  transform-origin: bottom center;
-  box-shadow: 0 0 16px rgba(247, 201, 72, 0.25);
+.book-btn:hover {
+  transform: translateY(-2px);
+  background: var(--orange-gradient);
+  box-shadow: 0 8px 20px rgba(255, 115, 0, 0.35);
 }
 
-.hour-hand {
-  height: 96px;
-  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+/* Services Grid */
+.section-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 48px 0;
 }
 
-.minute-hand {
-  height: 132px;
-  width: 3px;
-  background: linear-gradient(180deg, var(--orange), var(--gold));
+.section-card {
+  padding: 36px 28px;
 }
 
-.center-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 18px var(--gold);
-  position: absolute;
+.section-card h3 {
+  font-size: 1.4rem;
 }
 
-.signs {
-  position: absolute;
-  inset: 0;
-}
-
-.sign {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-  font-size: 0.77rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--gold-soft);
-  text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(247, 201, 72, 0.2);
-}
-
-.clock-meta {
-  display: grid;
-  gap: 18px;
-}
-
-.stat-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  padding: 24px;
-}
-
-.stat-card strong {
-  display: block;
-  margin-top: 10px;
-  font-size: 2rem;
-  color: var(--gold);
-}
-
-.stat-label {
-  display: block;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.8rem;
-}
-
-.stat-highlight strong {
-  font-size: 3rem;
-}
-
-.stat-highlight p {
-  margin-top: 10px;
-}
-
-.detail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.detail-grid strong {
-  display: block;
-  margin-top: 6px;
-  font-size: 1.2rem;
-}
-
-.section-heading {
-  margin-bottom: 24px;
-}
-
-.section-heading h2,
-.testimonial-card h2 {
-  margin: 0;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-}
-
+/* Testimonials */
 .testimonials {
-  margin: 42px 0;
+  margin: 64px 0;
 }
 
 .testimonial-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.testimonial-card {
-  position: relative;
+  margin-top: 36px;
 }
 
 .testimonial-card p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.9;
+  font-style: italic;
 }
 
 .testimonial-card strong {
   display: block;
-  margin-top: 22px;
-  color: var(--gold);
+  margin-top: 24px;
+  color: var(--gold-soft);
+  font-size: 0.95rem;
 }
 
+/* FAQs */
 .faq {
-  margin: 42px 0;
+  margin: 64px 0;
 }
 
 .faq-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 36px;
 }
 
 .faq-item h4 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
+  font-size: 1.15rem;
 }
 
+/* Contact Panel */
 .contact {
-  margin: 48px 0 24px;
+  margin: 64px 0 32px;
 }
 
 .contact-card {
   text-align: center;
-}
-
-.contact-card .eyebrow {
-  margin-bottom: 14px;
+  padding: 56px 32px;
+  border: 1px solid rgba(255, 115, 0, 0.25);
+  box-shadow: var(--shadow);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
 }
 
 .contact-card h2 {
+  font-size: 2.2rem;
   margin-bottom: 16px;
 }
 
-.contact-actions {
-  display: inline-flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 22px;
+/* Mobile Bottom App Bar Navigation styling */
+.bottom-app-bar {
+  display: none; /* Hidden on desktop */
 }
 
+/* Scroll reveal class defaults */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal.visible {
@@ -468,65 +1325,188 @@ h1 {
   transform: translateY(0);
 }
 
+/* Keyframes animations */
 @keyframes drift {
   from { transform: translateX(0); }
   to { transform: translateX(-160px); }
 }
 
-@media (max-width: 980px) {
-  .feature-grid,
-  .section-grid,
-  .testimonial-grid,
-  .faq-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-  .clock-body {
-    grid-template-columns: 1fr;
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Responsive Styles */
+@media (max-width: 1080px) {
+  .pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
   }
 }
 
-@media (max-width: 720px) {
-  .page-shell {
-    padding: 22px 16px 28px;
-  }
-
-  .hero-panel {
-    padding: 40px 22px 36px;
-  }
-
-  .hero-logo {
-    width: 110px;
-    height: 110px;
-  }
-
-  .feature-grid,
-  .section-grid,
-  .testimonial-grid,
-  .faq-grid {
+@media (max-width: 980px) {
+  .hero-grid {
     grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-copy {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-brand-row {
+    flex-direction: column;
+    text-align: center;
   }
 
   .hero-actions {
     justify-content: center;
   }
+
+  .feature-grid,
+  .section-grid,
+  .testimonial-grid,
+  .faq-grid,
+  .astrologers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  /* Offset body padding for mobile navigation bar */
+  body {
+    padding-bottom: 80px;
+  }
+
+  .page-shell {
+    padding: 16px 16px 36px;
+  }
+
+  .top-nav {
+    padding: 14px 20px;
+    top: 8px;
+  }
+
+  .hero-panel {
+    padding: 32px 16px;
+    border-radius: 28px;
+  }
+
+  .hero-logo-small {
+    width: 60px;
+    height: 60px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .feature-grid,
+  .section-grid,
+  .testimonial-grid,
+  .faq-grid,
+  .astrologers-grid,
+  .tarot-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .astrologers-grid,
+  .tarot-cards-grid {
+    gap: 16px;
+  }
+
+  .contact-card {
+    padding: 32px 20px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .clock-visual {
+    transform: scale(0.9);
+    margin-bottom: -15px;
+  }
+
+  /* App Bottom Navigation Bar styling */
+  .bottom-app-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 66px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(20px);
+    border-top: 1.5px solid rgba(212, 175, 55, 0.25);
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    padding: 6px 10px 10px; /* Safe padding for bottom notches */
+    box-shadow: 0 -6px 24px rgba(158, 125, 28, 0.08);
+  }
+
+  .app-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.65rem;
+    font-weight: 700;
+    gap: 3px;
+    transition: all 0.2s ease;
+  }
+
+  .app-tab svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--muted);
+    transition: stroke 0.2s ease;
+  }
+
+  .app-tab.active,
+  .app-tab:hover {
+    color: var(--orange);
+  }
+
+  .app-tab.active svg,
+  .app-tab:hover svg {
+    stroke: var(--orange);
+  }
 }
 
 @media (max-width: 520px) {
   h1 {
-    font-size: 2.6rem;
+    font-size: 2.1rem;
   }
 
-  .hero-panel {
-    padding: 32px 18px 32px;
+  .contact-card h2 {
+    font-size: 1.8rem;
   }
 
-  .button {
-    min-width: 160px;
-    padding: 12px 20px;
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clock-visual {
+    transform: scale(0.8);
+    margin-bottom: -30px;
   }
 
   .stat-card {
-    padding: 20px;
+    padding: 18px;
   }
 }

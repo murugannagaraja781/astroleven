@@ -11,54 +11,64 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=2.0" />
   </head>
-  <body>
+  <body class="lang-en">
     <div class="page-shell">
-      <header class="hero-panel">
+      <!-- Premium Top Navigation & Language Switcher -->
+      <nav class="top-nav reveal">
+        <div class="nav-logo">
+          <img src="images/astro-eleven-logo.png" alt="Astro Eleven Logo" class="nav-logo-img" />
+          <span class="nav-brand">ASTRO ELEVEN</span>
+        </div>
+        <div class="lang-switcher">
+          <button id="btn-en" class="lang-btn active">EN</button>
+          <button id="btn-ta" class="lang-btn">தமிழ்</button>
+        </div>
+      </nav>
+
+      <!-- Split Hero Section (Welcome + Interactive Zodiac Clock) -->
+      <header class="hero-panel reveal">
         <div class="hero-background"></div>
         <div class="hero-stars"></div>
-        <div class="hero-content reveal">
-          <img src="images/astro-eleven-logo.png" alt="Astro Eleven logo" class="hero-logo" />
+        <div class="hero-grid">
+          <!-- Hero Copy (Left Column) -->
           <div class="hero-copy">
-            <p class="eyebrow">Divine Astrology & Spiritual Luxury</p>
-            <h1>Unlock Your Destiny with Ancient Wisdom</h1>
+            <div class="hero-brand-row">
+              <img src="images/astro-eleven-logo.png" alt="Astro Eleven logo" class="hero-logo-small" />
+              <div>
+                <p class="eyebrow">
+                  <span class="lang-en">Divine Astrology & Spiritual Luxury</span>
+                  <span class="lang-ta">தெய்வீக ஜோதிடம் மற்றும் ஆன்மீக மேன்மை</span>
+                </p>
+                <p class="tagline">
+                  <span class="lang-en">GUIDING YOUR DESTINY</span>
+                  <span class="lang-ta">உங்கள் விதியை வழிநடத்துகிறோம்</span>
+                </p>
+              </div>
+            </div>
+            <h1>
+              <span class="lang-en">Unlock Your Destiny with Ancient Wisdom</span>
+              <span class="lang-ta">பண்டைய ஞானத்தின் மூலம் உங்கள் விதியை வெல்லுங்கள்</span>
+            </h1>
             <p class="subtitle">
-              Personalized Astrology, accurate guidance & positive life solutions crafted for your highest success.
+              <span class="lang-en">Personalized Astrology, accurate guidance & positive life solutions crafted for your highest success.</span>
+              <span class="lang-ta">உங்களின் உயர்ந்த வெற்றிக்காகத் துல்லியமான வழிகாட்டுதல், தனிப்பயனாக்கப்பட்ட ஜோதிடம் மற்றும் நேர்மறையான வாழ்க்கை தீர்வுகள்.</span>
             </p>
             <div class="hero-actions">
-              <a href="#contact" class="button button-primary">Get Free Horoscope</a>
-              <a href="#contact" class="button button-secondary">Talk to an Astrologer</a>
+              <a href="#contact" class="button button-primary">
+                <span class="lang-en">Get Free Horoscope</span>
+                <span class="lang-ta">இலவச ஜாதகம் பெற</span>
+              </a>
+              <a href="#contact" class="button button-secondary">
+                <span class="lang-en">Talk to an Astrologer</span>
+                <span class="lang-ta">ஜோதிடருடன் பேசுங்கள்</span>
+              </a>
             </div>
           </div>
-        </div>
-      </header>
 
-      <section class="feature-grid reveal">
-        <article class="feature-card">
-          <span class="feature-badge">01</span>
-          <h2>Why Choose Astro Eleven</h2>
-          <p>Trusted celestial guidance with high-vibe accuracy, premium soul-aligned readings and transformational clarity.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-badge">02</span>
-          <h2>Daily Horoscope</h2>
-          <p>Get a beautifully crafted daily forecast that empowers your decisions and reveals cosmic opportunities.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-badge">03</span>
-          <h2>Zodiac Compatibility</h2>
-          <p>Discover the love-match energy between you and your partner with premium compatibility insights.</p>
-        </article>
-      </section>
-
-      <section class="clock-section reveal" id="clock">
-        <div class="clock-card">
-          <div class="clock-header">
-            <p class="eyebrow">Live Zodiac Matching</p>
-            <h2>Interactive Live Zodiac Love-Match Clock</h2>
-          </div>
-          <div class="clock-body">
+          <!-- Hero Interactive Zodiac Clock (Right Column) -->
+          <div class="hero-clock" id="clock-section">
             <div class="clock-visual">
               <div class="zodiac-ring"></div>
               <div class="dial">
@@ -71,103 +81,684 @@
               </div>
               <div class="clock-glow"></div>
             </div>
-            <div class="clock-meta">
-              <div class="stat-card">
-                <span class="stat-label">Current Time</span>
+            
+            <div class="clock-status-bar">
+              <div class="status-item">
+                <span class="status-label">
+                  <span class="lang-en">Time</span>
+                  <span class="lang-ta">நேரம்</span>
+                </span>
                 <strong id="timeDisplay">--:--:--</strong>
               </div>
-              <div class="stat-card stat-highlight">
-                <span class="stat-label">Love Match</span>
+              <div class="status-item highlight">
+                <span class="status-label">
+                  <span class="lang-en">Love Match</span>
+                  <span class="lang-ta">பொருத்தம்</span>
+                </span>
                 <strong id="matchPercent">--%</strong>
-                <p id="matchText">A celestial spark of destiny</p>
               </div>
-              <div class="detail-grid">
-                <div>
-                  <span class="stat-label">Hour Sign</span>
-                  <strong id="hourSign">Aries</strong>
-                </div>
-                <div>
-                  <span class="stat-label">Minute Sign</span>
-                  <strong id="minuteSign">Taurus</strong>
+            </div>
+            
+            <div class="status-subtext">
+              <p id="matchText">
+                <span class="lang-en">A celestial spark of destiny</span>
+                <span class="lang-ta">அண்டவெளியின் தெய்வீக விதிப்பொறி</span>
+              </p>
+            </div>
+            
+            <div class="clock-indicators">
+              <div class="indicator-card">
+                <span class="ind-label">
+                  <span class="lang-en">Hour Sign</span>
+                  <span class="lang-ta">மணி ராசி</span>
+                </span>
+                <strong id="hourSign">--</strong>
+              </div>
+              <div class="indicator-card">
+                <span class="ind-label">
+                  <span class="lang-en">Minute Sign</span>
+                  <span class="lang-ta">நிமிட ராசி</span>
+                </span>
+                <strong id="minuteSign">--</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Overview Feature Cards -->
+      <section class="feature-grid reveal">
+        <article class="feature-card">
+          <span class="feature-badge">01</span>
+          <h2>
+            <span class="lang-en">Why Choose Astro Eleven</span>
+            <span class="lang-ta">ஏன் ஆஸ்ட்ரோ லெவன்?</span>
+          </h2>
+          <p>
+            <span class="lang-en">Trusted celestial guidance with high-vibe accuracy, premium soul-aligned readings and transformational clarity.</span>
+            <span class="lang-ta">நம்பகமான அண்ட வழிகாட்டுதல், துல்லியமான பலன்கள் மற்றும் ஆத்மார்த்தமான தெளிவு.</span>
+          </p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-badge">02</span>
+          <h2>
+            <span class="lang-en">Daily Horoscope</span>
+            <span class="lang-ta">தினசரி ராசிபலன்</span>
+          </h2>
+          <p>
+            <span class="lang-en">Get a beautifully crafted daily forecast that empowers your decisions and reveals cosmic opportunities.</span>
+            <span class="lang-ta">உங்கள் முடிவுகளை நல்வழிப்படுத்தும் மற்றும் அண்டத்தின் வாய்ப்புகளை வெளிப்படுத்தும் தினசரி கணிப்புகள்.</span>
+          </p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-badge">03</span>
+          <h2>
+            <span class="lang-en">Zodiac Compatibility</span>
+            <span class="lang-ta">ராசி பொருத்தம்</span>
+          </h2>
+          <p>
+            <span class="lang-en">Discover the love-match energy between you and your partner with premium compatibility insights.</span>
+            <span class="lang-ta">உங்களுக்கிடையேயான காதல் பொருத்தம் மற்றும் அண்ட ஆற்றலை நுண்ணறிவுடன் கண்டறியுங்கள்.</span>
+          </p>
+        </article>
+      </section>
+
+      <!-- Live Astrologers Directory Section -->
+      <section class="astrologers-section reveal" id="astrologers">
+        <div class="section-heading text-center">
+          <p class="eyebrow">
+            <span class="lang-en">Live Consultation</span>
+            <span class="lang-ta">நேரடி ஆலோசனை</span>
+          </p>
+          <h2>
+            <span class="lang-en">Consult Our Premium Astrologers</span>
+            <span class="lang-ta">எங்கள் பிரீமியம் ஜோதிடர்களுடன் ஆலோசியுங்கள்</span>
+          </h2>
+        </div>
+        <div class="astrologers-grid">
+          <!-- Card 1 -->
+          <div class="astrologer-card">
+            <div class="astro-badge">
+              <span class="status-dot"></span>
+              <span class="lang-en">Online</span>
+              <span class="lang-ta">ஆன்லைன்</span>
+            </div>
+            <div class="astro-profile">
+              <div class="astro-avatar-wrapper">
+                <div class="astro-avatar avatar-gold">AS</div>
+              </div>
+              <div class="astro-info">
+                <h3>
+                  <span class="lang-en">Astro Shanker</span>
+                  <span class="lang-ta">ஜோதிடர் சங்கர்</span>
+                </h3>
+                <p class="astro-spec">
+                  <span class="lang-en">Vedic Astrology, Kundli</span>
+                  <span class="lang-ta">வேத ஜோதிடம், குண்டலி</span>
+                </p>
+                <div class="astro-meta-row">
+                  <span class="astro-exp">
+                    <span class="lang-en">12 Yrs Exp</span>
+                    <span class="lang-ta">12 வருட அனுபவம்</span>
+                  </span>
+                  <span class="astro-rating">★ 4.9</span>
                 </div>
               </div>
+            </div>
+            <div class="astro-pricing-row">
+              <span class="lang-en"><strong class="price-val">₹25</strong> / min</span>
+              <span class="lang-ta"><strong class="price-val">₹25</strong> / நிமிடம்</span>
+            </div>
+            <div class="astro-actions">
+              <button class="astro-btn btn-chat" data-astro="Astro Shanker" data-action="chat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span class="lang-en">Chat</span>
+                <span class="lang-ta">அரட்டை</span>
+              </button>
+              <button class="astro-btn btn-call" data-astro="Astro Shanker" data-action="call">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span class="lang-en">Call</span>
+                <span class="lang-ta">அழைப்பு</span>
+              </button>
+              <button class="astro-btn btn-video" data-astro="Astro Shanker" data-action="video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                <span class="lang-en">Video</span>
+                <span class="lang-ta">காணொளி</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="astrologer-card">
+            <div class="astro-badge">
+              <span class="status-dot"></span>
+              <span class="lang-en">Online</span>
+              <span class="lang-ta">ஆன்லைன்</span>
+            </div>
+            <div class="astro-profile">
+              <div class="astro-avatar-wrapper">
+                <div class="astro-avatar avatar-orange">DP</div>
+              </div>
+              <div class="astro-info">
+                <h3>
+                  <span class="lang-en">Devi Priya</span>
+                  <span class="lang-ta">தேவி பிரியா</span>
+                </h3>
+                <p class="astro-spec">
+                  <span class="lang-en">Tarot Reading, Numerology</span>
+                  <span class="lang-ta">டாரோட் வாசிப்பு, எண்கணிதம்</span>
+                </p>
+                <div class="astro-meta-row">
+                  <span class="astro-exp">
+                    <span class="lang-en">8 Yrs Exp</span>
+                    <span class="lang-ta">8 வருட அனுபவம்</span>
+                  </span>
+                  <span class="astro-rating">★ 4.8</span>
+                </div>
+              </div>
+            </div>
+            <div class="astro-pricing-row">
+              <span class="lang-en"><strong class="price-val">₹20</strong> / min</span>
+              <span class="lang-ta"><strong class="price-val">₹20</strong> / நிமிடம்</span>
+            </div>
+            <div class="astro-actions">
+              <button class="astro-btn btn-chat" data-astro="Devi Priya" data-action="chat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span class="lang-en">Chat</span>
+                <span class="lang-ta">அரட்டை</span>
+              </button>
+              <button class="astro-btn btn-call" data-astro="Devi Priya" data-action="call">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span class="lang-en">Call</span>
+                <span class="lang-ta">அழைப்பு</span>
+              </button>
+              <button class="astro-btn btn-video" data-astro="Devi Priya" data-action="video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                <span class="lang-en">Video</span>
+                <span class="lang-ta">காணொளி</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="astrologer-card">
+            <div class="astro-badge">
+              <span class="status-dot"></span>
+              <span class="lang-en">Online</span>
+              <span class="lang-ta">ஆன்லைன்</span>
+            </div>
+            <div class="astro-profile">
+              <div class="astro-avatar-wrapper">
+                <div class="astro-avatar avatar-amber">AR</div>
+              </div>
+              <div class="astro-info">
+                <h3>
+                  <span class="lang-en">Acharya Raman</span>
+                  <span class="lang-ta">ஆச்சார்யா ராமன்</span>
+                </h3>
+                <p class="astro-spec">
+                  <span class="lang-en">Vastu, Gemology, Career</span>
+                  <span class="lang-ta">வாஸ்து, ரத்தினவியல், தொழில்</span>
+                </p>
+                <div class="astro-meta-row">
+                  <span class="astro-exp">
+                    <span class="lang-en">15 Yrs Exp</span>
+                    <span class="lang-ta">15 வருட அனுபவம்</span>
+                  </span>
+                  <span class="astro-rating">★ 4.9</span>
+                </div>
+              </div>
+            </div>
+            <div class="astro-pricing-row">
+              <span class="lang-en"><strong class="price-val">₹30</strong> / min</span>
+              <span class="lang-ta"><strong class="price-val">₹30</strong> / நிமிடம்</span>
+            </div>
+            <div class="astro-actions">
+              <button class="astro-btn btn-chat" data-astro="Acharya Raman" data-action="chat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span class="lang-en">Chat</span>
+                <span class="lang-ta">அரட்டை</span>
+              </button>
+              <button class="astro-btn btn-call" data-astro="Acharya Raman" data-action="call">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span class="lang-en">Call</span>
+                <span class="lang-ta">அழைப்பு</span>
+              </button>
+              <button class="astro-btn btn-video" data-astro="Acharya Raman" data-action="video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                <span class="lang-en">Video</span>
+                <span class="lang-ta">காணொளி</span>
+              </button>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Daily Tarot Card Reader Section -->
+      <section class="tarot-section reveal" id="tarot">
+        <div class="section-heading text-center">
+          <p class="eyebrow">
+            <span class="lang-en">Reveal Your Future</span>
+            <span class="lang-ta">உங்களது எதிர்காலத்தை அறியுங்கள்</span>
+          </p>
+          <h2>
+            <span class="lang-en">Daily Tarot Reading</span>
+            <span class="lang-ta">தினசரி டாரோட் அட்டையின் ரகசியம்</span>
+          </h2>
+          <p class="section-desc" style="color: var(--muted); margin: 8px 0 0 0; font-size: 0.95rem;">
+            <span class="lang-en">Choose a card below to reveal your daily focus and path.</span>
+            <span class="lang-ta">கீழே உள்ள ஏதேனும் ஒரு அட்டையைத் தேர்ந்தெடுத்து இன்றைய தினத்தின் பலனைத் தெரிந்துகொள்ளுங்கள்.</span>
+          </p>
+        </div>
+
+        <div class="tarot-container">
+          <div class="tarot-cards-grid">
+            <!-- Card 1: Love -->
+            <div class="tarot-card-wrapper" data-category="love">
+              <div class="tarot-card">
+                <!-- Card Back -->
+                <div class="card-side card-back">
+                  <div class="card-pattern">
+                    <div class="pattern-sun"></div>
+                  </div>
+                  <div class="card-label">
+                    <span class="lang-en">LOVE</span>
+                    <span class="lang-ta">காதல்</span>
+                  </div>
+                </div>
+                <!-- Card Front -->
+                <div class="card-side card-front">
+                  <div class="card-front-design">
+                    <div class="tarot-symbol">❤️</div>
+                    <h3 class="tarot-name">
+                      <span class="lang-en">The Lovers</span>
+                      <span class="lang-ta">காதலர்கள்</span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Career -->
+            <div class="tarot-card-wrapper" data-category="career">
+              <div class="tarot-card">
+                <!-- Card Back -->
+                <div class="card-side card-back">
+                  <div class="card-pattern">
+                    <div class="pattern-sun"></div>
+                  </div>
+                  <div class="card-label">
+                    <span class="lang-en">CAREER</span>
+                    <span class="lang-ta">தொழில்</span>
+                  </div>
+                </div>
+                <!-- Card Front -->
+                <div class="card-side card-front">
+                  <div class="card-front-design">
+                    <div class="tarot-symbol">⭐</div>
+                    <h3 class="tarot-name">
+                      <span class="lang-en">The Star</span>
+                      <span class="lang-ta">நட்சத்திரம்</span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Wealth -->
+            <div class="tarot-card-wrapper" data-category="wealth">
+              <div class="tarot-card">
+                <!-- Card Back -->
+                <div class="card-side card-back">
+                  <div class="card-pattern">
+                    <div class="pattern-sun"></div>
+                  </div>
+                  <div class="card-label">
+                    <span class="lang-en">WEALTH</span>
+                    <span class="lang-ta">செல்வம்</span>
+                  </div>
+                </div>
+                <!-- Card Front -->
+                <div class="card-side card-front">
+                  <div class="card-front-design">
+                    <div class="tarot-symbol">🪙</div>
+                    <h3 class="tarot-name">
+                      <span class="lang-en">Wheel of Fortune</span>
+                      <span class="lang-ta">விதிச் சக்கரம்</span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reading Reveal Display Container -->
+          <div class="tarot-reveal-panel" id="tarotRevealPanel" style="display: none;">
+            <div class="reveal-content-card">
+              <div class="reveal-header">
+                <span class="reveal-badge" id="revealBadge">Category</span>
+                <h4 id="revealTitle">Card Name</h4>
+              </div>
+              <p class="reveal-text" id="revealText">Your reading details go here...</p>
+              <button class="tarot-cta-btn" id="tarotCtaBtn">
+                <span class="lang-en">Book 1-on-1 Detailed Reading</span>
+                <span class="lang-ta">முழுமையான ஆலோசனை பெற</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sacred Pillars Section (Derived from Logo) -->
+      <section class="pillars-section reveal" id="pillars">
+        <div class="section-heading text-center">
+          <p class="eyebrow">
+            <span class="lang-en">Sacred Pillars</span>
+            <span class="lang-ta">ஐந்து தெய்வீக தூண்கள்</span>
+          </p>
+          <h2>
+            <span class="lang-en">Guiding Your Destiny</span>
+            <span class="lang-ta">உங்கள் விதியை நல்வழியில் வழிநடத்துகிறோம்</span>
+          </h2>
+        </div>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <!-- Sun / Expert Astrologers -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+              </svg>
+            </div>
+            <h3>
+              <span class="lang-en">Expert Astrologers</span>
+              <span class="lang-ta">நிபுணத்துவ ஜோதிடர்கள்</span>
+            </h3>
+            <p>
+              <span class="lang-en">Highly experienced scholars providing detailed, authentic predictions.</span>
+              <span class="lang-ta">விரிவான மற்றும் உண்மையான கணிப்புகளை வழங்கும் அனுபவம் வாய்ந்த ஜோதிட அறிஞர்கள்.</span>
+            </p>
+            <button class="book-btn" data-service="expert">
+              <span class="lang-en">Book Now</span>
+              <span class="lang-ta">முன்பதிவு செய்</span>
+            </button>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <!-- Hand Palm / Personalized Predictions -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 11V6a2 2 0 0 0-4 0v5m0-5V4a2 2 0 0 0-4 0v7m0-7V5a2 2 0 0 0-4 0v6M6 10v6a6 6 0 0 0 12 0v-5m-12 1c-1 0-2 .5-2 1.5S3 15 4 16l4 4h6"/>
+              </svg>
+            </div>
+            <h3>
+              <span class="lang-en">Personalized Predictions</span>
+              <span class="lang-ta">தனிப்பயனாக்கப்பட்ட கணிப்புகள்</span>
+            </h3>
+            <p>
+              <span class="lang-en">Birth chart calculations tailored precisely to your birth details and destiny.</span>
+              <span class="lang-ta">உங்கள் பிறந்த விவரங்கள் மற்றும் விதிக்கு ஏற்ப துல்லியமாக வடிவமைக்கப்பட்ட ஜாதகக் கணிப்புகள்.</span>
+            </p>
+            <button class="book-btn" data-service="personalized">
+              <span class="lang-en">Book Now</span>
+              <span class="lang-ta">முன்பதிவு செய்</span>
+            </button>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <!-- Star Spark / Accurate Guidance -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/>
+              </svg>
+            </div>
+            <h3>
+              <span class="lang-en">Accurate Guidance</span>
+              <span class="lang-ta">துல்லியமான வழிகாட்டுதல்</span>
+            </h3>
+            <p>
+              <span class="lang-en">Precise planetary transit insights to steer your life decisions successfully.</span>
+              <span class="lang-ta">உங்கள் வாழ்க்கை முடிவுகளை வெற்றிகரமாக வழிநடத்த துல்லியமான கிரக பெயர்ச்சி நுண்ணறிவுகள்.</span>
+            </p>
+            <button class="book-btn" data-service="guidance">
+              <span class="lang-en">Book Now</span>
+              <span class="lang-ta">முன்பதிவு செய்</span>
+            </button>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <!-- Ascending Destiny Chart / Positive Solutions -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                <path d="M15 8h3.7V11.7"/>
+              </svg>
+            </div>
+            <h3>
+              <span class="lang-en">Positive Solutions</span>
+              <span class="lang-ta">நேர்மறையான தீர்வுகள்</span>
+            </h3>
+            <p>
+              <span class="lang-en">Spiritual remedies, gemstone suggestions, and rituals for obstacles.</span>
+              <span class="lang-ta">தடைகளை நீக்க ஆன்மீக பரிகாரங்கள், ரத்தின ஆலோசனைகள் மற்றும் எளிய வழிபாட்டு முறைகள்.</span>
+            </p>
+            <button class="book-btn" data-service="solutions">
+              <span class="lang-en">Book Now</span>
+              <span class="lang-ta">முன்பதிவு செய்</span>
+            </button>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <!-- Lotus / Peace, Prosperity, Happiness -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10c0-2-1.5-4-3.5-4-.5 0-1 .1-1.5.3-.5-.2-1-.3-1.5-.3-2 0-3.5 2-3.5 4 0 6 8 10 8 10z"/>
+                <path d="M12 22s-8-4-8-10c0-2 1.5-4 3.5-4 .5 0 1 .1 1.5.3.5-.2 1-.3 1.5-.3 2 0 3.5 2 3.5 4 0 6-8 10-8 10z"/>
+              </svg>
+            </div>
+            <h3>
+              <span class="lang-en">Peace & Prosperity</span>
+              <span class="lang-ta">அமைதி & செழிப்பு</span>
+            </h3>
+            <p>
+              <span class="lang-en">Achieve spiritual alignment, wealth abundance, and lifelong joy.</span>
+              <span class="lang-ta">ஆன்மீக சீரமைப்பு, செல்வ வளம் மற்றும் வாழ்நாள் மகிழ்ச்சிக்கான வழிகாட்டுதல்.</span>
+            </p>
+            <button class="book-btn" data-service="peace">
+              <span class="lang-en">Book Now</span>
+              <span class="lang-ta">முன்பதிவு செய்</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Grid -->
       <section class="section-grid reveal">
         <article class="section-card">
-          <h3>Numerology Reports</h3>
-          <p>Decode your life path, fate number and unique soul signature with luxurious numerology analysis.</p>
+          <h3>
+            <span class="lang-en">Numerology Reports</span>
+            <span class="lang-ta">எண்கணித அறிக்கைகள்</span>
+          </h3>
+          <p>
+            <span class="lang-en">Decode your life path, fate number and unique soul signature with luxurious numerology analysis.</span>
+            <span class="lang-ta">உயர்தர எண்கணித பகுப்பாய்வு மூலம் உங்கள் வாழ்க்கை பாதை, விதி எண் மற்றும் தனித்துவமான ஆத்ம முத்திரையை கண்டறியுங்கள்.</span>
+          </p>
         </article>
         <article class="section-card">
-          <h3>Kundli Analysis</h3>
-          <p>Receive a detailed chart reading, planetary insights and spiritual remedies for life balance.</p>
+          <h3>
+            <span class="lang-en">Kundli Analysis</span>
+            <span class="lang-ta">குண்டலி பகுப்பாய்வு</span>
+          </h3>
+          <p>
+            <span class="lang-en">Receive a detailed chart reading, planetary insights and spiritual remedies for life balance.</span>
+            <span class="lang-ta">வாழ்க்கை சமநிலைக்கான விரிவான ஜாதக கட்ட வாசிப்பு, கிரக நுண்ணறிவுகள் மற்றும் ஆன்மீக பரிகாரங்களைப் பெறுங்கள்.</span>
+          </p>
         </article>
         <article class="section-card">
-          <h3>Career Guidance</h3>
-          <p>Find your highest career path, ambition triggers and success timing with premium astrological coaching.</p>
+          <h3>
+            <span class="lang-en">Career Guidance</span>
+            <span class="lang-ta">தொழில் வழிகாட்டுதல்</span>
+          </h3>
+          <p>
+            <span class="lang-en">Find your highest career path, ambition triggers and success timing with premium astrological coaching.</span>
+            <span class="lang-ta">பிரீமியம் ஜோதிட ஆலோசனையுடன் உங்கள் சிறந்த தொழில் பாதை, இலக்குகள் மற்றும் வெற்றிக்கான நேரத்தைக் கண்டறியுங்கள்.</span>
+          </p>
         </article>
         <article class="section-card">
-          <h3>Love & Relationship Predictions</h3>
-          <p>Explore your heart-space, romantic potential and soulmate timing through an elegant, trusted lens.</p>
+          <h3>
+            <span class="lang-en">Love & Relationship Predictions</span>
+            <span class="lang-ta">காதல் & உறவு கணிப்புகள்</span>
+          </h3>
+          <p>
+            <span class="lang-en">Explore your heart-space, romantic potential and soulmate timing through an elegant, trusted lens.</span>
+            <span class="lang-ta">ஒரு நேர்த்தியான, நம்பகமான கண்ணோட்டத்தின் மூலம் உங்கள் காதல் திறன் மற்றும் வாழ்க்கைத்துணை அமைவதற்கான நேரத்தை ஆராயுங்கள்.</span>
+          </p>
         </article>
         <article class="section-card">
-          <h3>Wealth & Prosperity Forecast</h3>
-          <p>Empower your financial journey with divine abundance readings and prosperity rituals.</p>
+          <h3>
+            <span class="lang-en">Wealth & Prosperity Forecast</span>
+            <span class="lang-ta">செல்வம் & செழிப்பு கணிப்பு</span>
+          </h3>
+          <p>
+            <span class="lang-en">Empower your financial journey with divine abundance readings and prosperity rituals.</span>
+            <span class="lang-ta">தெய்வீக செல்வ வள வாசிப்புகள் மற்றும் செழிப்பு சடங்குகள் மூலம் உங்கள் நிதிப் பயணத்தை மேம்படுத்துங்கள்.</span>
+          </p>
         </article>
       </section>
 
+      <!-- Testimonials -->
       <section class="testimonials reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Testimonials</p>
-          <h2>Trusted by seekers of clarity and success.</h2>
+        <div class="section-heading text-center">
+          <p class="eyebrow">
+            <span class="lang-en">Testimonials</span>
+            <span class="lang-ta">வாடிக்கையாளர் கருத்துக்கள்</span>
+          </p>
+          <h2>
+            <span class="lang-en">Trusted by seekers of clarity and success.</span>
+            <span class="lang-ta">தெளிவு மற்றும் வெற்றியைத் தேடுபவர்களின் நம்பகமான தேர்வு.</span>
+          </h2>
         </div>
         <div class="testimonial-grid">
           <article class="testimonial-card">
-            <p>"Astro Eleven offered the most elegant, accurate consultation I have ever received. The love-match clock felt magical."</p>
-            <strong>— Meera, Founder</strong>
+            <p>
+              <span class="lang-en">"Astro Eleven offered the most elegant, accurate consultation I have ever received. The love-match clock felt magical."</span>
+              <span class="lang-ta">"நான் பெற்றதிலேயே மிகவும் நேர்த்தியான, துல்லியமான ஆலோசனை ஆஸ்ட்ரோ லெவன் வழங்கியது. காதல் பொருத்தக் கடிகாரம் மாயாஜாலம் போல் இருந்தது."</span>
+            </p>
+            <strong>
+              <span class="lang-en">— Meera, Founder</span>
+              <span class="lang-ta">— மீரா, நிறுவனர்</span>
+            </strong>
           </article>
           <article class="testimonial-card">
-            <p>"Premium, soulful, and clear. Every section feels tailored to my life path and future goals."</p>
-            <strong>— Arjun, CEO</strong>
+            <p>
+              <span class="lang-en">"Premium, soulful, and clear. Every section feels tailored to my life path and future goals."</span>
+              <span class="lang-ta">"உயர்தரமான, ஆத்மார்த்தமான மற்றும் தெளிவான வழிகாட்டுதல். ஒவ்வொரு பகுதியும் எனது வாழ்க்கைப்பாதை மற்றும் எதிர்கால இலக்குகளுக்கு ஏற்ப வடிவமைக்கப்பட்டுள்ளது."</span>
+            </p>
+            <strong>
+              <span class="lang-en">— Arjun, CEO</span>
+              <span class="lang-ta">— அர்ஜுன், தலைமை நிர்வாக அதிகாரி</span>
+            </strong>
           </article>
         </div>
       </section>
 
+      <!-- FAQ Section -->
       <section class="faq reveal">
-        <div class="section-heading">
-          <p class="eyebrow">FAQ</p>
-          <h2>Your most asked questions answered.</h2>
+        <div class="section-heading text-center">
+          <p class="eyebrow">
+            <span class="lang-en">FAQ</span>
+            <span class="lang-ta">அடிக்கடி கேட்கப்படும் கேள்விகள்</span>
+          </p>
+          <h2>
+            <span class="lang-en">Your most asked questions answered.</span>
+            <span class="lang-ta">உங்களின் சந்தேகங்களுக்கான எளிய பதில்கள்.</span>
+          </h2>
         </div>
         <div class="faq-grid">
           <div class="faq-item">
-            <h4>How does the Live Zodiac Love-Match Clock work?</h4>
-            <p>It maps current time to zodiac energies, revealing a real-time compatibility percentage and personality match.</p>
+            <h4>
+              <span class="lang-en">How does the Live Zodiac Love-Match Clock work?</span>
+              <span class="lang-ta">நேரடி ராசிப் பொருத்தக் கடிகாரம் எவ்வாறு செயல்படுகிறது?</span>
+            </h4>
+            <p>
+              <span class="lang-en">It maps current time to zodiac energies, revealing a real-time compatibility percentage and personality match.</span>
+              <span class="lang-ta">இது தற்போதைய நேரத்தை ராசி ஆற்றல்களுடன் ஒப்பிட்டு, நிகழ்நேரப் பொருத்தம் மற்றும் ஆளுமைப் பொருத்தத்தைக் கணக்கிடுகிறது.</span>
+            </p>
           </div>
           <div class="faq-item">
-            <h4>Can I get a custom horoscope?</h4>
-            <p>Yes. Our astrologers provide personal readings based on your birth chart, location and life goals.</p>
+            <h4>
+              <span class="lang-en">Can I get a custom horoscope?</span>
+              <span class="lang-ta">நான் தனிப்பயனாக்கப்பட்ட ஜாதகத்தைப் பெறலாமா?</span>
+            </h4>
+            <p>
+              <span class="lang-en">Yes. Our astrologers provide personal readings based on your birth chart, location and life goals.</span>
+              <span class="lang-ta">ஆம். எங்களது ஜோதிட நிபுணர்கள் உங்களது பிறந்த நேரம், பிறந்த இடம் மற்றும் பிறந்த தேதியின் அடிப்படையில் பிரத்யேக ஜாதக வாசிப்புகளை வழங்குவார்கள்.</span>
+            </p>
           </div>
           <div class="faq-item">
-            <h4>Is Astro Eleven suitable for career advice?</h4>
-            <p>Absolutely. We combine astrology, numerology and sacred timing to guide career, wealth and purpose.</p>
+            <h4>
+              <span class="lang-en">Is Astro Eleven suitable for career advice?</span>
+              <span class="lang-ta">தொழில் ஆலோசனைக்கு ஆஸ்ட்ரோ லெவன் பொருத்தமானதா?</span>
+            </h4>
+            <p>
+              <span class="lang-en">Absolutely. We combine astrology, numerology and sacred timing to guide career, wealth and purpose.</span>
+              <span class="lang-ta">நிச்சயமாக. உங்களது தொழில், செல்வம் மற்றும் இலக்குகளை நல்வழிப்படுத்த ஜோதிடம், எண்கணிதம் மற்றும் கிரகங்களின் சேர்க்கை காலங்களை நாங்கள் பயன்படுத்துகிறோம்.</span>
+            </p>
           </div>
         </div>
       </section>
 
+      <!-- Contact Section -->
       <section class="contact reveal" id="contact">
         <div class="contact-card">
-          <span class="eyebrow">Contact & Consultation</span>
-          <h2>Reserve your premium astrology session today.</h2>
-          <p>Speak with a senior astrologer, receive a bespoke reading and start your journey to clarity.</p>
+          <span class="eyebrow">
+            <span class="lang-en">Contact & Consultation</span>
+            <span class="lang-ta">தொடர்பு & ஆலோசனை</span>
+          </span>
+          <h2>
+            <span class="lang-en">Reserve your premium astrology session today.</span>
+            <span class="lang-ta">உங்களுக்கான பிரத்யேக ஜோதிட ஆலோசனையை இன்றே முன்பதிவு செய்யுங்கள்.</span>
+          </h2>
+          <p>
+            <span class="lang-en">Speak with a senior astrologer, receive a bespoke reading and start your journey to clarity.</span>
+            <span class="lang-ta">எங்களது மூத்த ஜோதிட நிபுணர்களிடம் பேசி, உங்களது ஜாதகத்தின் துல்லியமான பலன்களை அறிந்து தெளிவான பயணத்தைத் தொடங்குங்கள்.</span>
+          </p>
           <div class="contact-actions">
-            <a href="mailto:consult@astroeleven.com" class="button button-primary">Email Consultation</a>
-            <a href="tel:+919999999999" class="button button-secondary">Book a Call</a>
+            <a href="mailto:consult@astroeleven.com" class="button button-primary">
+              <span class="lang-en">Email Consultation</span>
+              <span class="lang-ta">மின்னஞ்சல் ஆலோசனை</span>
+            </a>
+            <a href="tel:+919999999999" class="button button-secondary">
+              <span class="lang-en">Book a Call</span>
+              <span class="lang-ta">அழைப்பை முன்பதிவு செய்ய</span>
+            </a>
           </div>
         </div>
-      </section>
+      </header>
+
+      <!-- Mobile Bottom App Bar -->
+      <div class="bottom-app-bar">
+        <a href="#" class="app-tab active">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="lang-en">Home</span>
+          <span class="lang-ta">முகப்பு</span>
+        </a>
+        <a href="#astrologers" class="app-tab">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="lang-en">Astrologers</span>
+          <span class="lang-ta">ஜோதிடர்கள்</span>
+        </a>
+        <a href="#tarot" class="app-tab">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          <span class="lang-en">Tarot</span>
+          <span class="lang-ta">டாரோட்</span>
+        </a>
+        <a href="#contact" class="app-tab">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="lang-en">Contact</span>
+          <span class="lang-ta">தொடர்பு</span>
+        </a>
+      </div>
     </div>
 
     <script src="js/jquery.min.js"></script>
