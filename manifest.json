@@ -1,0 +1,18 @@
+{
+  "short_name": "Astro Eleven",
+  "name": "Astro Eleven - Premium Astrology",
+  "description": "Premium live zodiac love-match clock and astrology consultations.",
+  "icons": [
+    {
+      "src": "images/astro-eleven-logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1E1A12",
+  "theme_color": "#D4AF37",
+  "display": "standalone",
+  "orientation": "portrait"
+}

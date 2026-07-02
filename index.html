@@ -2,9 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Astro Eleven | Ultra-premium astrology platform" />
     <title>Astro Eleven | Unlock Your Destiny</title>
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Astro Eleven" />
+    <link rel="apple-touch-icon" href="images/astro-eleven-logo.png" />
+    <meta name="theme-color" content="#1E1A12" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,8 +37,10 @@
         </div>
       </nav>
 
-      <!-- Split Hero Section (Welcome + Interactive Zodiac Clock) -->
-      <header class="hero-panel reveal">
+      <!-- Home View (Part 1) -->
+      <div class="app-view app-view-home active-view">
+        <!-- Split Hero Section (Welcome + Interactive Zodiac Clock) -->
+        <header class="hero-panel reveal">
         <div class="hero-background"></div>
         <div class="hero-stars"></div>
         <div class="hero-grid">
@@ -162,9 +174,12 @@
           </p>
         </article>
       </section>
+      </div>
 
-      <!-- Live Astrologers Directory Section -->
-      <section class="astrologers-section reveal" id="astrologers">
+      <!-- Astrologers View -->
+      <div class="app-view app-view-astrologers">
+        <!-- Live Astrologers Directory Section -->
+        <section class="astrologers-section reveal" id="astrologers">
         <div class="section-heading text-center">
           <p class="eyebrow">
             <span class="lang-en">Live Consultation</span>
@@ -333,9 +348,12 @@
           </div>
         </div>
       </section>
+      </div>
 
-      <!-- Daily Tarot Card Reader Section -->
-      <section class="tarot-section reveal" id="tarot">
+      <!-- Tarot View -->
+      <div class="app-view app-view-tarot">
+        <!-- Daily Tarot Card Reader Section -->
+        <section class="tarot-section reveal" id="tarot">
         <div class="section-heading text-center">
           <p class="eyebrow">
             <span class="lang-en">Reveal Your Future</span>
@@ -448,9 +466,12 @@
           </div>
         </div>
       </section>
+      </div>
 
-      <!-- Sacred Pillars Section (Derived from Logo) -->
-      <section class="pillars-section reveal" id="pillars">
+      <!-- Home View (Part 2) -->
+      <div class="app-view app-view-home">
+        <!-- Sacred Pillars Section (Derived from Logo) -->
+        <section class="pillars-section reveal" id="pillars">
         <div class="section-heading text-center">
           <p class="eyebrow">
             <span class="lang-en">Sacred Pillars</span>
@@ -707,9 +728,12 @@
           </div>
         </div>
       </section>
+      </div>
 
-      <!-- Contact Section -->
-      <section class="contact reveal" id="contact">
+      <!-- Contact View -->
+      <div class="app-view app-view-contact">
+        <!-- Contact Section -->
+        <section class="contact reveal" id="contact">
         <div class="contact-card">
           <span class="eyebrow">
             <span class="lang-en">Contact & Consultation</span>
@@ -734,7 +758,8 @@
             </a>
           </div>
         </div>
-      </header>
+      </section>
+      </div>
 
       <!-- Mobile Bottom App Bar -->
       <div class="bottom-app-bar">
@@ -758,6 +783,18 @@
           <span class="lang-en">Contact</span>
           <span class="lang-ta">தொடர்பு</span>
         </a>
+      </div>
+    </div>
+
+    <!-- Premium Bottom Sheet Modal (for mobile detailed readouts/booking) -->
+    <div class="bottom-sheet" id="appBottomSheet" style="display: none;">
+      <div class="bottom-sheet-overlay" id="bottomSheetOverlay"></div>
+      <div class="bottom-sheet-content">
+        <div class="bottom-sheet-drag-handle"></div>
+        <button class="bottom-sheet-close" id="bottomSheetCloseBtn">&times;</button>
+        <div class="bottom-sheet-body" id="bottomSheetBody">
+          <!-- Dynamic Content Loaded via JS -->
+        </div>
       </div>
     </div>
 

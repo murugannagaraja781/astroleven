@@ -138,51 +138,95 @@ $(function () {
       const service = this.getAttribute('data-service');
       const lang = document.body.classList.contains('lang-ta') ? 'ta' : 'en';
       
+      let serviceLabel = '';
       let message = '';
       if (lang === 'ta') {
         switch(service) {
           case 'expert':
+            serviceLabel = 'நிபுணத்துவ ஜோதிடர்கள்';
             message = 'வணக்கம் Astro Eleven, நான் "நிபுணத்துவ ஜோதிடர்கள்" சேவைக்கான ஒரு அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
             break;
           case 'personalized':
+            serviceLabel = 'தனிப்பயனாக்கப்பட்ட கணிப்புகள்';
             message = 'வணக்கம் Astro Eleven, நான் "தனிப்பயனாக்கப்பட்ட கணிப்புகள்" சேவைக்கான ஒரு அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
             break;
           case 'guidance':
+            serviceLabel = 'துல்லியமான வழிகாட்டுதல்';
             message = 'வணக்கம் Astro Eleven, நான் "துல்லியமான வழிகாட்டுதல்" சேவைக்கான ஒரு அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
             break;
           case 'solutions':
+            serviceLabel = 'நேர்மறையான தீர்வுகள்';
             message = 'வணக்கம் Astro Eleven, நான் "நேர்மறையான தீர்வுகள்" சேவைக்கான ஒரு அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
             break;
           case 'peace':
+            serviceLabel = 'அமைதி, செழிப்பு மற்றும் மகிழ்ச்சி';
             message = 'வணக்கம் Astro Eleven, நான் "அமைதி, செழிப்பு மற்றும் மகிழ்ச்சி" சேவைக்கான ஒரு அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
             break;
           default:
+            serviceLabel = 'ஜோதிட ஆலோசனை';
             message = 'வணக்கம் Astro Eleven, நான் ஒரு ஜோதிட ஆலோசனை அமர்வை முன்பதிவு செய்ய விரும்புகிறேன்.';
         }
       } else {
         switch(service) {
           case 'expert':
+            serviceLabel = 'Expert Astrologers';
             message = 'Hi Astro Eleven, I would like to book a session for "Expert Astrologers".';
             break;
           case 'personalized':
+            serviceLabel = 'Personalized Predictions';
             message = 'Hi Astro Eleven, I would like to book a session for "Personalized Predictions".';
             break;
           case 'guidance':
+            serviceLabel = 'Accurate Guidance';
             message = 'Hi Astro Eleven, I would like to book a session for "Accurate Guidance".';
             break;
           case 'solutions':
+            serviceLabel = 'Positive Solutions';
             message = 'Hi Astro Eleven, I would like to book a session for "Positive Solutions".';
             break;
           case 'peace':
+            serviceLabel = 'Peace, Prosperity, and Happiness';
             message = 'Hi Astro Eleven, I would like to book a session for "Peace, Prosperity, and Happiness".';
             break;
           default:
+            serviceLabel = 'Astrology Consultation';
             message = 'Hi Astro Eleven, I would like to book an astrology consultation session.';
         }
       }
       
       const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
+      
+      const confirmHtml = `
+        <div class="booking-confirm-sheet" style="padding: 10px 0;">
+          <div style="font-size: 2.2rem; margin-bottom: 12px;">🌟</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold-soft); margin: 0 0 8px 0; font-weight: 800;">
+            ${lang === 'ta' ? 'முன்பதிவை உறுதி செய்' : 'Confirm Booking'}
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin: 0 0 20px 0;">
+            ${lang === 'ta' ? 'எங்களது மூத்த ஜோதிடருடன் நேரடி அமர்வை முன்பதிவு செய்ய விரும்புகிறீர்களா?' : 'You are about to book a premium consultation session with our senior astrologer.'}
+          </p>
+          <div style="background: rgba(212, 175, 55, 0.05); border: 1.5px dashed rgba(212, 175, 55, 0.4); border-radius: 20px; padding: 16px; margin-bottom: 24px; text-align: left;">
+            <strong style="color: var(--orange); display: block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.05em;">
+              ${lang === 'ta' ? 'தேர்ந்தெடுக்கப்பட்ட சேவை' : 'Selected Service'}
+            </strong>
+            <span style="font-weight: 700; color: var(--text); font-size: 0.95rem;">${serviceLabel}</span>
+          </div>
+          <button class="popup-btn btn-enter" id="btnConfirmWhatsApp" style="margin-bottom: 12px; border: none; width: 100%;">
+            ${lang === 'ta' ? 'வாட்ஸ்அப் மூலம் தொடர்க' : 'Proceed via WhatsApp'}
+          </button>
+          <button class="popup-btn btn-close" id="btnCancelBooking" style="width: 100%;">
+            ${lang === 'ta' ? 'தவிர்' : 'Cancel'}
+          </button>
+        </div>
+      `;
+      
+      openBottomSheet(confirmHtml);
+      
+      document.getElementById('btnConfirmWhatsApp').addEventListener('click', function() {
+        window.open(whatsappUrl, '_blank');
+        closeBottomSheet();
+      });
+      document.getElementById('btnCancelBooking').addEventListener('click', closeBottomSheet);
     });
   });
 
@@ -227,7 +271,42 @@ $(function () {
       }
       
       const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
+      const avatarLetters = astrologerName.split(' ').map(n => n[0]).join('');
+      
+      const confirmHtml = `
+        <div class="booking-confirm-sheet" style="padding: 10px 0;">
+          <div style="font-size: 2.2rem; margin-bottom: 12px;">🔮</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold-soft); margin: 0 0 8px 0; font-weight: 800;">
+            ${lang === 'ta' ? 'ஜோதிட ஆலோசனை' : 'Astrologer Consultation'}
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text); line-height: 1.6; margin: 0 0 20px 0;">
+            ${lang === 'ta' ? 'தேர்ந்தெடுக்கப்பட்ட பிரீமியம் ஜோதிடருடன் உடனே இணைந்திடுங்கள்.' : 'Connect instantly with your chosen premium astrologer.'}
+          </p>
+          <div style="background: rgba(212, 175, 55, 0.05); border: 1.5px dashed rgba(212, 175, 55, 0.4); border-radius: 20px; padding: 16px; margin-bottom: 24px; text-align: left; display: flex; align-items: center; gap: 14px;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--gold-gradient); display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; font-size: 1.1rem; flex-shrink: 0; box-shadow: 0 4px 10px rgba(158, 125, 28, 0.15);">
+              ${avatarLetters}
+            </div>
+            <div>
+              <strong style="color: var(--text); display: block; font-size: 1.1rem; font-weight: 800;">${astrologerName}</strong>
+              <span style="color: var(--orange); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em;">${actionText}</span>
+            </div>
+          </div>
+          <button class="popup-btn btn-enter" id="btnConfirmWhatsApp" style="margin-bottom: 12px; border: none; width: 100%;">
+            ${lang === 'ta' ? 'வாட்ஸ்அப்பில் தொடர்புகொள்' : 'Connect on WhatsApp'}
+          </button>
+          <button class="popup-btn btn-close" id="btnCancelBooking" style="width: 100%;">
+            ${lang === 'ta' ? 'தவிர்' : 'Cancel'}
+          </button>
+        </div>
+      `;
+      
+      openBottomSheet(confirmHtml);
+      
+      document.getElementById('btnConfirmWhatsApp').addEventListener('click', function() {
+        window.open(whatsappUrl, '_blank');
+        closeBottomSheet();
+      });
+      document.getElementById('btnCancelBooking').addEventListener('click', closeBottomSheet);
     });
   });
 
@@ -333,14 +412,123 @@ $(function () {
     }
   }
 
-  // Handle mobile bottom navigation tabs active state
+  // Register PWA Service Worker for offline support
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        console.log('Astro Eleven ServiceWorker registered: ', reg.scope);
+      }).catch((err) => {
+        console.log('Astro Eleven ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+
+  // Helper function to switch active mobile view
+  function switchMobileView(viewName) {
+    const views = document.querySelectorAll('.app-view');
+    views.forEach(v => v.classList.remove('active-view'));
+    
+    const targetViews = document.querySelectorAll('.app-view-' + viewName);
+    targetViews.forEach(v => v.classList.add('active-view'));
+
+    const appTabs = document.querySelectorAll('.app-tab');
+    appTabs.forEach(t => t.classList.remove('active'));
+    
+    const targetHref = viewName === 'home' ? '#' : '#' + viewName;
+    const activeTab = document.querySelector(`.bottom-app-bar .app-tab[href="${targetHref}"]`);
+    if (activeTab) activeTab.classList.add('active');
+    
+    // Sync body class for global targeting
+    document.body.className = document.body.className.replace(/\bview-active-\S+/g, '');
+    document.body.classList.add('view-active-' + viewName);
+
+    // Scroll back to top instantly for clean page switches
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  // Handle mobile bottom navigation tabs active state and view toggles
   const appTabs = document.querySelectorAll('.app-tab');
   appTabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      appTabs.forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
+    tab.addEventListener('click', function(e) {
+      if (window.innerWidth <= 720) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const viewName = href === '#' ? 'home' : href.substring(1);
+        switchMobileView(viewName);
+      }
     });
   });
+
+  // Premium Bottom Sheet Modal Controls
+  const bottomSheet = document.getElementById('appBottomSheet');
+  const bottomSheetBody = document.getElementById('bottomSheetBody');
+  const bottomSheetCloseBtn = document.getElementById('bottomSheetCloseBtn');
+  const bottomSheetOverlay = document.getElementById('bottomSheetOverlay');
+
+  function openBottomSheet(htmlContent) {
+    if (!bottomSheet || !bottomSheetBody) return;
+    bottomSheetBody.innerHTML = htmlContent;
+    bottomSheet.style.display = 'flex';
+    // Trigger reflow to start CSS transition
+    bottomSheet.offsetHeight;
+    bottomSheet.classList.add('show');
+  }
+
+  function closeBottomSheet() {
+    if (!bottomSheet) return;
+    bottomSheet.classList.remove('show');
+    setTimeout(() => {
+      bottomSheet.style.display = 'none';
+      if (bottomSheetBody) bottomSheetBody.innerHTML = '';
+    }, 380); // Match CSS transition duration
+  }
+
+  if (bottomSheetCloseBtn) {
+    bottomSheetCloseBtn.addEventListener('click', closeBottomSheet);
+  }
+  if (bottomSheetOverlay) {
+    bottomSheetOverlay.addEventListener('click', closeBottomSheet);
+  }
+
+  // Touch gesture handling for dragging down to dismiss the bottom sheet
+  let startY = 0;
+  let currentY = 0;
+  let isDragging = false;
+  const sheetContent = document.querySelector('.bottom-sheet-content');
+
+  if (sheetContent) {
+    sheetContent.addEventListener('touchstart', (e) => {
+      // Only drag down if we are at the top scroll position of the sheet content
+      if (sheetContent.scrollTop <= 0) {
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        sheetContent.style.transition = 'none';
+      }
+    }, { passive: true });
+
+    sheetContent.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      currentY = e.touches[0].clientY;
+      const diffY = currentY - startY;
+      if (diffY > 0) { // Dragging downwards
+        sheetContent.style.transform = `translateY(${diffY}px)`;
+      }
+    }, { passive: true });
+
+    sheetContent.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      sheetContent.style.transition = '';
+      const diffY = currentY - startY;
+      if (diffY > 120) { // Dragged far enough down to dismiss
+        closeBottomSheet();
+      } else {
+        sheetContent.style.transform = ''; // Bounce back
+      }
+      startY = 0;
+      currentY = 0;
+    });
+  }
 
   // Handle Ganesha Blessing Popup for new visitors
   const ganeshaPopup = document.getElementById('ganeshaPopup');
